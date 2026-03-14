@@ -14,42 +14,38 @@
     const params = new URLSearchParams(window.location.search);
     const survey = params.get("survey");
 
-    // Define all surveys
+    // Define all surveys (corrected syntax)
     const surveys = {
       "1": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
       "2": "https://survey.porsline.com/s/7o0pD7eI",
       "3": "https://surveymars.com/q/ebRDY3u2a",
       "4": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "5": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/"
+      "5": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
       "6": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
       "7": "https://survey.porsline.com/s/7o0pD7eI",
       "8": "https://surveymars.com/q/ebRDY3u2a",
       "9": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "10": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/"
+      "10": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
       "11": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
       "12": "https://survey.porsline.com/s/7o0pD7eI",
       "13": "https://surveymars.com/q/ebRDY3u2a",
       "14": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "15": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/"
+      "15": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
       "16": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
+      "24": "https://survey.porsline.com/s/7o0pD7eI",
       "26": "https://survey.porsline.com/s/7o0pD7eI",
       "34": "https://surveymars.com/q/ebRDY3u2a",
-      "44": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "54": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/
-      "24": "https://survey.porsline.com/s/7o0pD7eI",
-      "34": "https://surveymars.com/q/ebRDY3u2a",
-      "46": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "53": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/"
-      "71": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
-      "28": "https://survey.porsline.com/s/7o0pD7eI",
       "35": "https://surveymars.com/q/ebRDY3u2a",
-      "49": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "50": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/"
-      "13": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
-      "23": "https://survey.porsline.com/s/7o0pD7eI",
-      "34": "https://surveymars.com/q/ebRDY3u2a",
+      "44": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
       "45": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "56": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/"
+      "46": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
+      "49": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
+      "50": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
+      "53": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
+      "54": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
+      "56": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
+      "71": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
+      "23": "https://survey.porsline.com/s/7o0pD7eI"
     };
 
     let timeLeft = 10;
@@ -57,14 +53,19 @@
     const timer = setInterval(() => {
       timeLeft--;
       countdownElement.textContent = timeLeft;
-      if(timeLeft <= 0) {
+      if (timeLeft <= 0) {
         clearInterval(timer);
-        if(surveys[survey]) {
+        if (surveys[survey]) {
           window.location.href = surveys[survey];
         } else {
-          // Instead of plain text, redirect to fail.html
+          // Redirect to fail.html if survey not found
           window.location.href = "fail.html";
         }
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
       }
     }, 1000);
   </script>
