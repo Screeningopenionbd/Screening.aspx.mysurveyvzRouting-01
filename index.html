@@ -14,6 +14,7 @@
     const params = new URLSearchParams(window.location.search);
     const survey = params.get("survey");
 
+    // Define all surveys
     const surveys = {
       "1": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
       "2": "https://survey.porsline.com/s/7o0pD7eI",
@@ -32,7 +33,8 @@
         if(surveys[survey]) {
           window.location.href = surveys[survey];
         } else {
-          document.body.innerHTML = "<h2>❌ Survey not found.</h2>";
+          // Instead of plain text, redirect to fail.html
+          window.location.href = "fail.html";
         }
       }
     }, 1000);
