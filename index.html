@@ -1,52 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redirecting | OpenionBD</title>
+  <title>Survey Router | OpenionBD</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="callback">
-    <h2>✅ You qualify!</h2>
+    <h2 id="status">Checking your luck...</h2>
     <p>Redirecting in <span id="countdown">10</span> seconds...</p>
   </main>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const survey = params.get("survey");
+    // List of surveys
+    const surveys = [
+      "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
+      "https://survey.porsline.com/s/7o0pD7eI",
+      "https://surveymars.com/q/ebRDY3u2a",
+      "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
+      "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/"
+    ];
 
-    // Define all surveys (corrected syntax)
-    const surveys = {
-      "1": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
-      "2": "https://survey.porsline.com/s/7o0pD7eI",
-      "3": "https://surveymars.com/q/ebRDY3u2a",
-      "4": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "5": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
-      "6": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
-      "7": "https://survey.porsline.com/s/7o0pD7eI",
-      "8": "https://surveymars.com/q/ebRDY3u2a",
-      "9": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "10": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
-      "11": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
-      "12": "https://survey.porsline.com/s/7o0pD7eI",
-      "13": "https://surveymars.com/q/ebRDY3u2a",
-      "14": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "15": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
-      "16": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
-      "24": "https://survey.porsline.com/s/7o0pD7eI",
-      "26": "https://survey.porsline.com/s/7o0pD7eI",
-      "34": "https://surveymars.com/q/ebRDY3u2a",
-      "35": "https://surveymars.com/q/ebRDY3u2a",
-      "44": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "45": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "46": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "49": "https://www.allcounted.com/s?did=3oamz96fln5oa&lang=en_US",
-      "50": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
-      "53": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
-      "54": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
-      "56": "https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/",
-      "71": "https://nafiznoobz.questionpro.com/a/TakeSurvey?tt=o7ch8utJsRcECHrPeIW9eQ%3D%3D",
-      "23": "https://survey.porsline.com/s/7o0pD7eI"
-    };
+    // Randomly decide success or fail
+    const lucky = Math.random() < 0.7; // 70% chance success, 30% fail
+    let redirectUrl;
+
+    if (lucky) {
+      document.getElementById("status").textContent = "✅ You qualify!";
+      redirectUrl = surveys[Math.floor(Math.random() * surveys.length)];
+    } else {
+      document.getElementById("status").textContent = "❌ No survey available!";
+      redirectUrl = "fail.html";
+    }
 
     let timeLeft = 10;
     const countdownElement = document.getElementById("countdown");
@@ -55,17 +39,7 @@
       countdownElement.textContent = timeLeft;
       if (timeLeft <= 0) {
         clearInterval(timer);
-        if (surveys[survey]) {
-          window.location.href = surveys[survey];
-        } else {
-          // Redirect to fail.html if survey not found
-          window.location.href = "fail.html";
-        }
-      }
-    }, 1000);
-  </script>
-</body>
-</html>
+        window.location.href = redirectUrl;
       }
     }, 1000);
   </script>
